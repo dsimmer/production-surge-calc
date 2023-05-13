@@ -3,23 +3,23 @@ import {createRoot} from "react-dom/client"
 
 const turretList = {
   // @ts-ignore
-  "0": {label: "0/1 Challenger", asset: new URL("./assets/0.webp", import.meta.url)},
+  "0": {label: "0/1 Challenger", asset: new URL("assets/0.webp", import.meta.url)},
   // @ts-ignore
-  "1": {label: "1/1", asset: new URL("./assets/1.webp", import.meta.url)},
+  "1": {label: "1/1", asset: new URL("assets/1.webp", import.meta.url)},
   // @ts-ignore
-  "2": {label: "2/1 Tough", asset: new URL("./assets/2.webp", import.meta.url)},
+  "2": {label: "2/1 Tough", asset: new URL("assets/2.webp", import.meta.url)},
   // @ts-ignore
-  "3": {label: "3/1 Fearsome", asset: new URL("./assets/3.webp", import.meta.url)},
+  "3": {label: "3/1 Fearsome", asset: new URL("assets/3.webp", import.meta.url)},
   // @ts-ignore
-  "4": {label: "4/1 Overwhelm", asset: new URL("./assets/4.webp", import.meta.url)},
+  "4": {label: "4/1 Overwhelm", asset: new URL("assets/4.webp", import.meta.url)},
   // @ts-ignore
-  "5": {label: "5/1 Quick Attack", asset: new URL("./assets/5.webp", import.meta.url)},
+  "5": {label: "5/1 Quick Attack", asset: new URL("assets/5.webp", import.meta.url)},
   // @ts-ignore
-  "6": {label: "6/1 Elusive :)", asset: new URL("./assets/6.webp", import.meta.url)},
+  "6": {label: "6/1 Elusive :)", asset: new URL("assets/6.webp", import.meta.url)},
   // @ts-ignore
-  "7": {label: "7/1 Barrier", asset: new URL("./assets/7.webp", import.meta.url)},
+  "7": {label: "7/1 Barrier", asset: new URL("assets/7.webp", import.meta.url)},
   // @ts-ignore
-  "8": {label: "8/8 Dino", asset: new URL("./assets/8.webp", import.meta.url)},
+  "8": {label: "8/8 Dino", asset: new URL("assets/8.webp", import.meta.url)},
 }
 
 

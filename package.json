@@ -6,7 +6,8 @@
   "browserslist": "> 0.5%, last 2 versions, not dead",
   "scripts": {
     "watch": "parcel --no-cache",
-    "build": "parcel build --no-cache",
+    "buildw": "del /S /F /Q .\\dist && parcel build --no-cache --public-url ./production-surge-calc/",
+    "buildl": "rm -rf ./dist/* && parcel build --no-cache --public-url ./production-surge-calc/",
     "deploy": "git subtree push --prefix dist origin gh-pages",
     "lint": "eslint",
     "test": "jest",
