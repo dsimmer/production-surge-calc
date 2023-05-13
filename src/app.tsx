@@ -53,42 +53,54 @@ const UIMain = () => {
 
   // Possibly two different ways of displaying, one the chance of getting a particular turret, the other a particular outcome
 
-  const resultsArray = Object.entries(results)
+  const resultsArray = Object.entries(results).sort(([_, chanceA], [__, chanceB]) => {
+    if (chanceA < chanceB)
+      return 1;
+    if (chanceA > chanceB)
+      return -1;
+    return 0;
+  })
 
   return <div>
-    <label>Mana spent</label>
-    <input type="number" value={manaSpent} onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
-      const value = event.target.value
-      if (value < 0) {
-        setManaSpent(0)
-      } else if (value > 13) {
-        setManaSpent(13)
-      } else {
-        setManaSpent(Number(value))
-      }
+    <h3>Inputs:</h3>
+    <div className="input-line">
+      <label>Mana spent</label>
+      <input type="number" value={manaSpent} onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+        const value = event.target.value
+        if (value < 0) {
+          setManaSpent(0)
+        } else if (value > 13) {
+          setManaSpent(13)
+        } else {
+          setManaSpent(Number(value))
+        }
       }} />
-    <label>Available board space</label>
-    <input type="number" value={boardSpace} onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
-      const value = event.target.value
-      if (value < 1) {
-        setBoardSpace(1)
-      } else if (value > 6) {
-        setBoardSpace(6)
-      } else {
-        setBoardSpace(Number(value))
-      }
-      }} />
+    </div>
+    <div className="input-line">
+      <label>Available board space</label>
+      <input type="number" value={boardSpace} onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+        const value = event.target.value
+        if (value < 1) {
+          setBoardSpace(1)
+        } else if (value > 6) {
+          setBoardSpace(6)
+        } else {
+          setBoardSpace(Number(value))
+        }
+        }} />
+    </div>
     <h3>{resultsArray.length} Possible Result/s:</h3>
-    {resultsArray.map(([turrets, chance]) => (<div className="item">
-      <div className="chance">{Number(chance.toFixed(2))}%</div>
-      <div className="turret-list">{String(turrets).split('').map(
-        turret =>
-        <div>
-          {/* <div>{turretList[turret].label}</div> */}
-          <img className="turret" src={turretList[turret].asset}></img>
+      {resultsArray.map(([turrets, chance]) => (<div className="item">
+        <div className="chance">{Number(chance.toFixed(2))}%</div>
+          <div className="turret-list">{String(turrets).split('').map(
+            turret =>
+            <div>
+              {/* <div>{turretList[turret].label}</div> */}
+              <img className="turret" src={turretList[turret].asset}></img>
+            </div>
+          )}</div>
         </div>
-      )}</div>
-    </div>))}
+      ))}
   </div>
 }
 

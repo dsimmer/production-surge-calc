@@ -1,3 +1,15 @@
+.input-line {
+  display: flex;
+  justify-content: space-between;
+  max-width: 220px;
+  padding-bottom: 10px;
+
+  input {
+    width: 50px;
+  }
+}
+
+
 .item {
   display: flex;
   align-items: center;
