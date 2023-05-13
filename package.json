@@ -5,9 +5,8 @@
   "source": "src/index.html",
   "browserslist": "> 0.5%, last 2 versions, not dead",
   "scripts": {
-    "w": "del /S /F /Q .\\dist && xcopy /S /I .\\src\\assets .\\dist\\assets && parcel --no-cache",
-    "l": "rm -rf ./dist/* && cp -R ./src/assets ./dist/assets && parcel --no-cache",
-    "build": "parcel build --no-cache && cp -R ./src ./dist",
+    "watch": "parcel --no-cache",
+    "build": "parcel build --no-cache",
     "deploy": "git subtree push --prefix dist origin gh-pages",
     "lint": "eslint",
     "test": "jest",
