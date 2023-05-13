@@ -1,0 +1,16 @@
+.item {
+  display: flex;
+  align-items: center;
+  .chance {
+    font-size: 20px;
+    min-width: 70px;
+  }
+  .turret-list {
+    display: flex;
+    .turret {
+      max-width: 100px;
+      padding-right: 10px;
+    }
+  }
+}
+
