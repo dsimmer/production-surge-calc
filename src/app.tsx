@@ -53,6 +53,20 @@ const UIMain = () => {
 
   // Possibly two different ways of displaying, one the chance of getting a particular turret, the other a particular outcome
 
+  // $ chance of getting elusive
+  let elusiveResult = 0
+
+  // % chance of spawning X number of units
+  const unitResult: {[key: string]: number} = {}
+  Object.entries(results).forEach(([k, v]) => {
+    const numOfUnits = k.length
+    unitResult[numOfUnits] = (unitResult[numOfUnits] || 0) + v
+
+    if (k.includes('6')) {
+      elusiveResult = elusiveResult + v
+    }
+  })
+
   const resultsArray = Object.entries(results).sort(([_, chanceA], [__, chanceB]) => {
     if (chanceA < chanceB)
       return 1;
@@ -89,16 +103,30 @@ const UIMain = () => {
         }
         }} />
     </div>
+    <div className="separator" />
+    {Object.entries(unitResult).map(([num, chance]) => (
+      <div className="units">
+        <div>{`Probability of exactly ${num} unit/s`}</div>
+        <div className="prob">{Number(chance.toFixed(2))}%</div>
+      </div>
+    ))}
+    <div className="separator" />
+    <div className="units">
+      <div>{`Probability of at least one elusive: ${Number(elusiveResult.toFixed(2))}%`}</div>
+    </div>
+    <div className="separator" />
     <h3>{resultsArray.length} Possible Result/s:</h3>
-      {resultsArray.map(([turrets, chance]) => (<div className="item">
-        <div className="chance">{Number(chance.toFixed(2))}%</div>
-          <div className="turret-list">{String(turrets).split('').map(
-            turret =>
-            <div>
-              {/* <div>{turretList[turret].label}</div> */}
-              <img className="turret" src={turretList[turret].asset}></img>
-            </div>
-          )}</div>
+      {resultsArray.map(([turrets, chance]) => (
+        <div className="item">
+          <div className="chance">{Number(chance.toFixed(2))}%</div>
+          <div className="turret-list">
+            {String(turrets).split('').map(turret =>
+              <div>
+                {/* <div>{turretList[turret].label}</div> */}
+                <img className="turret" src={turretList[turret].asset}></img>
+              </div>
+            )}
+          </div>
         </div>
       ))}
   </div>
